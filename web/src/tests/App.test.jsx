@@ -1,12 +1,14 @@
 import { render, screen } from "@testing-library/react";
-import App from "../App";
+import { BrowserRouter } from "react-router-dom";
+import NavBar from "../componentes/NavBar";
 
 test("renderiza a navbar com ALUNOS e NOVO ALUNO", () => {
-  render(<App />);
+  render(
+    <BrowserRouter>
+      <NavBar />
+    </BrowserRouter>
+  );
 
-  // Verifica se o botão ALUNOS existe
-  expect(screen.getByText(/ALUNOS/i)).toBeInTheDocument();
-
-  // Verifica se o botão NOVO ALUNO existe
-  expect(screen.getByText(/NOVO ALUNO/i)).toBeInTheDocument();
+  expect(screen.getByText("ALUNOS")).toBeInTheDocument();
+  expect(screen.getByText("NOVO ALUNO")).toBeInTheDocument();
 });

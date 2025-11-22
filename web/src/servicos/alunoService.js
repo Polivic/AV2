@@ -2,9 +2,15 @@ import axios from "axios";
 
 const API_URL = "https://proweb.leoproti.com.br/alunos";
 
+
 const listar = async () => {
-  const { data } = await axios.get(API_URL);
-  return data;
+  try {
+    const { data } = await axios.get(API_URL);
+    return data;
+  } catch (e) {
+    console.error("Erro ao listar alunos:", e);
+    throw e;
+  }
 };
 
 const obter = async (id) => {
@@ -12,13 +18,13 @@ const obter = async (id) => {
   return data;
 };
 
-const criar = async (aluno) => {
-  const { data } = await axios.post(API_URL, aluno);
+const criar = async (obj) => {
+  const { data } = await axios.post(API_URL, obj);
   return data;
 };
 
-const atualizar = async (id, aluno) => {
-  const { data } = await axios.put(`${API_URL}/${id}`, aluno);
+const atualizar = async (id, obj) => {
+  const { data } = await axios.put(`${API_URL}/${id}`, obj);
   return data;
 };
 

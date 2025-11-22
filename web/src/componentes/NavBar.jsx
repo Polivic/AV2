@@ -6,6 +6,8 @@ import PersonAddAlt1Icon from "@mui/icons-material/PersonAddAlt1";
 export default function NavBar() {
   const location = useLocation();
 
+  const isActive = (path) => location.pathname === path;
+
   return (
     <AppBar
       position="static"
@@ -13,30 +15,30 @@ export default function NavBar() {
         borderRadius: "12px",
         margin: "16px",
         width: "calc(100% - 32px)",
-        backgroundColor: "#1976d2",
-        boxShadow: "0 4px 12px rgba(0,0,0,0.15)"
+        backgroundColor: "#7b001c", // vinho escuro
+        boxShadow: "0 4px 12px rgba(0,0,0,0.15)",
       }}
     >
       <Toolbar>
         <Stack direction="row" spacing={2}>
           <Button
-            color={location.pathname === "/" ? "secondary" : "inherit"}
-            variant={location.pathname === "/" ? "contained" : "text"}
+            color={isActive("/alunos") ? "secondary" : "inherit"}
+            variant={isActive("/alunos") ? "contained" : "text"}
             component={RouterLink}
-            to="/"
+            to="/alunos"
             startIcon={<ListAltIcon />}
-            sx={{ fontWeight: "bold" }}
+            sx={{ fontWeight: "bold"}}
           >
             ALUNOS
           </Button>
 
           <Button
-            color={location.pathname === "/novo" ? "secondary" : "inherit"}
-            variant={location.pathname === "/novo" ? "contained" : "text"}
+            color={isActive("/novo") ? "secondary" : "inherit"}
+            variant={isActive("/novo") ? "contained" : "text"}
             component={RouterLink}
             to="/novo"
             startIcon={<PersonAddAlt1Icon />}
-            sx={{ fontWeight: "bold" }}
+            sx={{ fontWeight: "bold"}}
           >
             NOVO ALUNO
           </Button>

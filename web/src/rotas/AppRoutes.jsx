@@ -1,13 +1,15 @@
 import { Routes, Route } from "react-router-dom";
-import ListaAlunos from "../páginas/ListaAlunos";
-import FormAlunoPage from "../páginas/FormAlunoPage";
+import HomePage from "../paginas/HomePage";
+import ListaAlunos from "../paginas/ListaAlunos";
+import FormAlunoPage from "../paginas/FormAlunoPage";
 
 export default function AppRoutes() {
   return (
     <Routes>
-      <Route path="/" element={<ListaAlunos />} />
+      <Route path="/" element={<HomePage />} />
+      <Route path="/alunos" element={<ListaAlunos />} />
       <Route path="/novo" element={<FormAlunoPage />} />
       <Route path="/editar/:id" element={<FormAlunoPage />} />
     </Routes>
-  );
+  );
 }
